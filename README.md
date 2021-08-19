@@ -20,7 +20,6 @@ An example of the desired directory tree is as follows:
 
 ```
     # Startup that runs each time the class is called
-    # Startup that runs each time the class is called
     def __init__(self):
         import os
 
