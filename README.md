@@ -11,7 +11,7 @@ The [USGS](https://mrdata.usgs.gov/geology/state/state.php?state=OR) hosts two f
 While following this demo, please be aware that all code snippets are intended to be run as part of the complete code. The complete code is provided at the bottom of this page.
 <br><br/>
 ### Setting Up The Folders
-To follow this demo as written, you will need to edit the script to change the **main_dir** variable to reflect your preferred destination directory. Once you have done so, you will need to create some folders in that directory, specifically the *Oregon_Geologic_Map_Demo* folder, and within it *Methods*, *Data*, and *Results* folders; within the *Data* folder create a *Conditioned_SHP* folder. You can create them manually or run the demo script from anywhere which will create them for you if they don't already exist. Once you have created the folders, copy the unzipped folder of shapefiles ("ORgeol_dd") and the color info file ("lithrgb") to the *Data* folder.
+To follow this demo as written, you will need to edit the script to change the **main_dir** variable to reflect your preferred destination directory. Once you have done so, you will need to create some folders in that directory, specifically the *Oregon_Geologic_Map_Demo* folder, and within it *Methods*, *Data*, and *Results* folders; within the *Data* folder create a *Conditioned_SHP* folder. You can create them manually or run the demo script from anywhere which will create them for you if they don't already exist. Once you have created the folders, copy the unzipped folder of shapefiles ("ORgeol_dd") and the color info file ("lithrgb.txt") to the *Data* folder.
 
 An example of the desired directory tree is as follows:
 <p align="center">
