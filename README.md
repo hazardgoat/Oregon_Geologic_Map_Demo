@@ -86,7 +86,7 @@ The shapefile (.shp extention) needs to be conditioned in preparation for making
             index += 1
             for old_value, new_value in replacements.items():
                 if old_value in name:
-                    conditioned_unit_names[index] = name.lower().replace(old_value, new_value)\
+                    conditioned_unit_names[index] = name.lower().replace(old_value, new_value)
 
         # Replaces the geologic unit names of the ROCKTYPE1 column in the dataframe with the conditioned names
         for name, conditioned_name in zip(unit_names, conditioned_unit_names):
