@@ -172,7 +172,7 @@ Now that the shapefile with the polygon data is conditioned, a color palette tab
 ```
 <br><br/>
 ### Creating The Postscript Legend File
-In order to give context to the colors of the geologic map, a legend needs to be created; this will be accomplished by created a postscript file.
+In order to give context to the colors of the geologic map, a legend needs to be created; this will be accomplished by creating a postscript file.
 
 ```
     # Creates a legend postscript file
