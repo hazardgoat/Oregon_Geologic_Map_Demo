@@ -50,7 +50,7 @@ An example of the desired directory tree is as follows:
         exit()
 ```
 
-Data files created by the demo script will save to the *Data* folder, and the geologic map or Oregon will save to the *Results* folder. The *Methods* folder should contain the demo script.
+Data files created by the demo script will save to the *Data* folder, and the geologic map of Oregon will save to the *Results* folder. The *Methods* folder should contain the demo script.
 <br><br/>
 ### Conditioning The Shapefile
 The shapefile (.shp extention) needs to be conditioned in preparation for making the color palette table (.cpt extension). The color palette table needs the geologic units names to be in a format it can understand, which necessitates no spaces or special characters. The shapefile and color palette table need to have the same names for geologic units or else coloring the geologic units won’t work, and because the color palette table is the limiting factor, we need to condition the shapefile so that the unit names will be in agreement. For simplicity’s sake, I am following the [instructions](https://mrdata.usgs.gov/geology/state/style_help.html) provided by the USGS for coloring the geologic map using it’s ArcMap style sheet, which indicate coloring the units by the ROCKTYPE1 column. The next step is to isolate the ROCKTYPE1 column values within the shapefile and condition them:
@@ -68,10 +68,10 @@ The shapefile (.shp extention) needs to be conditioned in preparation for making
         # Shapefile of geologic unit polygons
         geo_polygons = os.path.join(self.main_dir, 'Data', 'ORgeol_dd', 'orgeol_poly_dd.shp')
 
-        # Reads the shapefiel into a DataFrame
+        # Reads the shapefile into a DataFrame
         df_geo_polygons = gpd.read_file(geo_polygons, driver = 'SHP')
 
-        # Creates a numpy aray of the unique values in the ROCKTYPE1 column
+        # Creates a numpy array of the unique values in the ROCKTYPE1 column
         unit_names = df_geo_polygons['ROCKTYPE1'].unique()
 
         # List of unit names as they initally appear in the shapefile
@@ -150,7 +150,7 @@ Now that the shapefile with the polygon data is conditioned, a color palette tab
         # Regular expression that finds tab-spaces between numbers
         pattern = re.compile(r'(?<=\d)(\t)(?=\d)')
 
-        # Uses the regular expression to replace the sired tab-spaces with "/"
+        # Uses the regular expression to replace tab-spaces with "/"
         data = pattern.sub('/', data)
 
         with open(geo_cpt, 'w') as f:
@@ -174,10 +174,10 @@ Now that the shapefile with the polygon data is conditioned, a color palette tab
 ```
 <br><br/>
 ### Creating The Postscript Legend File
-In order to give context to the colors of the geologic map, a legend needs to be created; this will be accomplished by creating a postscript file.
+In order to give context to the colors of the geologic map, a legend needs to be created; this will be accomplished by creating a postscript file:
 
 ```
-    # Creates a legend postscript file
+        # Creates a legend postscript file
     def Create_Legend(self):
         import os
         import pandas as pd
@@ -230,7 +230,7 @@ In order to give context to the colors of the geologic map, a legend needs to be
 ### Plotting The Geologic Map
 Now the geologic map is finally ready to be plotted:
 ```
-    # Plots the map    
+        # Plots the map    
     def Plot_Map(self):
         import os
         import geopandas as gpd
@@ -276,7 +276,7 @@ Now the geologic map is finally ready to be plotted:
         pygmt.config(FONT_ANNOT_PRIMARY = '8p,Helvetica,black')
 
 
-        #  Basemap layer
+        # Basemap layer
         fig.basemap(
             region = region,
             projection = projection,
@@ -285,7 +285,7 @@ Now the geologic map is finally ready to be plotted:
 
         # Geologic unit layer
         fig.plot(
-            # .gmt file - automatically detects polygon coordinates if in last column
+            # File data - automatically detects polygon coordinates if in last column
             data = df_geo_polygons,
             # Sets polygon outline colour  
             pen = pens['geology'],
@@ -344,7 +344,7 @@ Shapefile source: http://pubs.usgs.gov/of/2005/1305/data/ORgeol_dd.zip
 Color info file (right-click and "save page as"): https://mrdata.usgs.gov/catalog/lithrgb.txt
 
 Setup instructions:
-1) To run this script as-is, you will need to change the main_dir variable in the __init__ function to reflect your desired path. 
+1) To run this script as-is, you will need to change the main_dir variable to reflect your desired path. 
 2) You will need to create some folders at the destination, specifically a "Oregon_Geologic_Map_Demo" folder, and within it the "Methods", "Data", and "Results" folders.
 You can either do that manually or run this script once from anywhere to automatically create them. 
 3) Once you have created them, move the unzipped shapefile folder titled ORgeol_dd to the Data folder, as well as the color info file.
@@ -352,6 +352,7 @@ You can either do that manually or run this script once from anywhere to automat
 
 Data files that are generated by this script will save to the Data folder, and the resulting map will save to Results
 '''
+
 
 # Controls whether the project folders data are automatically created
 create_folders = False
@@ -414,10 +415,10 @@ class Map_Maker():
         # Shapefile of geologic unit polygons
         geo_polygons = os.path.join(self.main_dir, 'Data', 'ORgeol_dd', 'orgeol_poly_dd.shp')
 
-        # Reads the shapefiel into a DataFrame
+        # Reads the shapefile into a DataFrame
         df_geo_polygons = gpd.read_file(geo_polygons, driver = 'SHP')
 
-        # Creates a numpy aray of the unique values in the ROCKTYPE1 column
+        # Creates a numpy array of the unique values in the ROCKTYPE1 column
         unit_names = df_geo_polygons['ROCKTYPE1'].unique()
 
         # List of unit names as they initally appear in the shapefile
@@ -494,7 +495,7 @@ class Map_Maker():
         # Regular expression that finds tab-spaces between numbers
         pattern = re.compile(r'(?<=\d)(\t)(?=\d)')
 
-        # Uses the regular expression to replace the sired tab-spaces with "/"
+        # Uses the regular expression to replace tab-spaces with "/"
         data = pattern.sub('/', data)
 
         with open(geo_cpt, 'w') as f:
@@ -624,7 +625,7 @@ class Map_Maker():
 
         # Geologic unit layer
         fig.plot(
-            # .gmt file - automatically detects polygon coordinates if in last column
+            # data file - automatically detects polygon coordinates if in last column
             data = df_geo_polygons,
             # Sets polygon outline colour  
             pen = pens['geology'],
