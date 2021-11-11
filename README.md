@@ -1,4 +1,4 @@
-# Oregon-Geologic-Map-Demo
+# Oregon Geologic Map Demo
 A demonstration of how to recreate a geologic map of Oregon with PyGMT using a shapefile
 
 ![Oregon_Geologic_Map_Demo](https://user-images.githubusercontent.com/74040471/130313824-9113de82-646c-4e4f-9ac6-4b889ff3e2f5.png)
