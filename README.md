@@ -47,6 +47,7 @@ An example of the desired directory tree is as follows:
         for directory in directories:
             os.makedirs(directory, exist_ok = True)
         
+        print("Be sure to set the create_folders parameter to False in order to run the main script")
         exit()
 ```
 
@@ -403,6 +404,9 @@ class Map_Maker():
         # Iterates through the list of directories and creates them if they don't already exist
         for directory in directories:
             os.makedirs(directory, exist_ok = True)
+        
+        print("Be sure to set the create_folders parameter to False in order to run the main script")
+        exit()
 
     
 
@@ -476,7 +480,7 @@ class Map_Maker():
         # Writes the DataFrame as a CSV file so that the data can be conditioned
         df_geo_colors.to_csv(geo_cpt, sep = '\t', header = None, index = False)
 
-        with open(geo_cpt, 'r') as f:
+        with open(geo_cpt, 'r', encoding = 'latin-1') as f:
             data = f.read()
 
         # Keys are what need to be replaced in words, and values are what they will be replaced with
@@ -492,12 +496,11 @@ class Map_Maker():
         # Regular expression that finds tab-spaces between numbers
         pattern = re.compile(r'(?<=\d)(\t)(?=\d)')
 
-        # Uses the regular expression to replace the sired tab-spaces with "/"
+        # Uses the regular expression to replace tab-spaces with "/"
         data = pattern.sub('/', data)
 
         with open(geo_cpt, 'w') as f:
             f.write(data)
-
 
         # DataFrame used to hold the unit names from the cpt-like file prior to conditioning and the conditioned rgb colors
         self.df_cpt_data = pd.DataFrame()
@@ -506,7 +509,7 @@ class Map_Maker():
         self.df_cpt_data['geo_unit'] = df_geo_colors.iloc[:, 0]
 
         # Reads in the conditioned cpt file using tab delimiters and no column titles
-        df_cpt_data = pd.read_csv(geo_cpt, sep ='\t', header = None)
+        df_cpt_data = pd.read_csv(geo_cpt, sep ='\t', header = None, encoding = 'latin-1')
 
         # Adds only the second column (unit color column) to a column in the new dataframe titled 'color'
         self.df_cpt_data['color'] = df_cpt_data.iloc[:, 1]
